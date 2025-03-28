@@ -39,7 +39,7 @@ export const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative px-7 py-5 mt-10 bg-white rounded-xl w-[334px] z-[1] max-md:max-w-[334px] max-md:w-[90%] max-sm:p-4 max-sm:mt-10"
+      className="relative px-7 py-5 mt-10 bg-white rounded-xl w-[380px] z-[1] max-md:max-w-[334px] max-md:w-[90%] max-sm:p-4 max-sm:mt-10"
     >
       <div className="mb-5 max-sm:mb-3">
         <Input
@@ -58,12 +58,12 @@ export const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button
+        {/* <button
           type="button"
           className="mt-2.5 text-base text-right text-black w-full"
         >
           Forget password?
-        </button>
+        </button> */}
       </div>
       <div className="mb-5">
         <Button type="submit" fullWidth>

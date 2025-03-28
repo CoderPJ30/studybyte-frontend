@@ -44,7 +44,7 @@ export const SignUpForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative px-7 py-5 mt-7 bg-white rounded-xl w-[334px] z-[1] max-md:max-w-[334px] max-md:w-[90%] max-sm:p-4 max-sm:mt-10"
+      className="relative px-7 py-5 mt-7 bg-white rounded-xl w-[400px] z-[1] max-md:max-w-[334px] max-md:w-[90%] max-sm:p-4 max-sm:mt-10"
     >
       <div className="mb-5 max-sm:mb-3">
         <Input
