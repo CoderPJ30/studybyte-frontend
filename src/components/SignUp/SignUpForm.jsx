@@ -7,10 +7,10 @@ import UserContext from "../../context/UserContext.js";
 import { showSuccessToast, showErrorToast } from "../../utils/toast.js";
 
 export const SignUpForm = () => {
-  const [fullname, setFullname] = useState("Pujan Jani");
-  const [email, setEmail] = useState("pj@gmail.com");
-  const [password, setPassword] = useState("Pj@pass30");
-  const [confirmPassword, setConfirmPassword] = useState("Pj@pass30");
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
 
