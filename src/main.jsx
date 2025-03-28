@@ -5,7 +5,9 @@ import App from './App.jsx'
 import {
   createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate
 } from 'react-router-dom';
-import { ErrorPage, SignUpPage, LoginPage, HomePage } from './components/index.js';
+import {
+  ErrorPage, SignUpPage, LoginPage, HomePage, BookDetailsPage, BookReader, MyBooks
+} from './components/index.js';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 // Public Route Component (Prevents logged-in users from accessing login/signup)
@@ -20,6 +22,9 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<PublicRoute element={<SignUpPage />} />} />
       <Route path="/login" element={<PublicRoute element={<LoginPage />} />} />
       <Route path="/home" element={<ProtectedRoute element={<HomePage />} />} />
+      <Route path="/book/:bookId" element={<ProtectedRoute element={<BookDetailsPage />} />} />
+      <Route path="/book/:bookId/read" element={<ProtectedRoute element={<BookReader />} />} />
+      <Route path="/my-books" element={<ProtectedRoute element={<MyBooks />} />} />
     </Route>
   )
 );

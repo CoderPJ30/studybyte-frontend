@@ -1,7 +1,7 @@
 const API_BASE_URL = "http://localhost:3000/api/v1";
 
 // Helper function to get the access token from storage
-const getToken = () => localStorage.getItem("accessToken");
+const getToken = () => localStorage.getItem("token");
 
 // Centralized API function
 const apiCall = async (endpoint, { method = "GET", body = null, headers = {} } = {}) => {

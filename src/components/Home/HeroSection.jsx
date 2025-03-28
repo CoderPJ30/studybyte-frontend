@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="mt-9 w-full max-w-[1200px] max-md:pr-5 max-md:max-w-full">
+    <section className="mt-9 max-w-[1356px] max-md:pr-5 max-md:max-w-full">
       <div className="flex flex-wrap md:flex-nowrap gap-10 items-center p-16 rounded-2xl bg-neutral-700 leading-6 max-md:px-5 ">
         <article className="w-[71%] max-md:ml-0 max-md:w-full">
           <div className="self-stretch my-auto min-h-[351px] min-w-[300px] w-[484px]">
@@ -33,7 +33,7 @@ const HeroSection = () => {
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7fd4059a44ad756b20e87e6971af7830ed5c9ce3a49839083b168f0b9c638f9?placeholderIfAbsent=true&apiKey=2de4a0ed8a394998a15e1196bab5e726"
             alt="Library illustration"
-            className="object-contain w-full aspect-[1.38] max-md:mt-10 max-md:max-w-full"
+            className="object-contain w-full aspect-[1.50] max-md:mt-10 max-md:max-w-full"
           />
         </aside>
       </div>

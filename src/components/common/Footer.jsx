@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="overflow-hidden pt-8 pr-20 pl-8 mt-16 max-w-full bg-white border-t border-zinc-300 w-[1200px] max-md:px-5 max-md:mt-10">
+    <footer className="sticky top-[100vh] pt-8 pr-20 pl-8 mt-16 max-w-full bg-white border-t border-zinc-300 w-[1356px] max-md:px-5 max-md:mt-10">
       <div className="flex gap-5 max-md:flex-col">
         <div className="w-3/12 max-md:ml-0 max-md:w-full">
           <div className="flex flex-col items-start min-h-[83px] max-md:mt-10">

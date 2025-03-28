@@ -3,9 +3,9 @@ import BookCard from "./BookCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const BookGrid = ({ title, books, variant = "simple" }) => {
+const BookGrid = ({ title, books, isDetailed = true }) => {
   return (
-    <section className="mt-9 w-full max-w-[1200px] max-md:max-w-full">
+    <section className="mt-9 w-full max-w-[1356px] max-md:max-w-full">
       <div className="flex items-center justify-between mb-10 ml-5 max-md:ml-2.5">
         <h2 className="text-2xl font-bold text-white">
           {title}
@@ -19,13 +19,14 @@ const BookGrid = ({ title, books, variant = "simple" }) => {
       </div>
       <div className="flex gap-5 max-md:flex-col">
         {books.map((book, index) => (
-          <div key={index} className="w-3/12 max-md:ml-0 max-md:w-full">
+          <div key={index} className="w-72 max-md:ml-0 max-md:w-full">
             <BookCard
-              imageUrl={book.imageUrl}
-              title={book.title}
-              category={book.category}
-              price={book.price}
-              variant={variant}
+              id={book._id}
+              cover={book.book_cover}
+              title={book.book_title}
+              genre={book.book_genre}
+              price={book.book_price}
+              isDetailed={isDetailed}
             />
           </div>
         ))}

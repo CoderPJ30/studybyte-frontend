@@ -5,6 +5,11 @@ import LoginPage from './Login/LoginPage'
 
 import HomePage from './Home/HomePage'
 
+import BookDetailsPage from './BookDetails/BookDetailsPage'
+import BookReader from './BookReader'
+
+import MyBooks from './MyBooks'
+
 export {
   ErrorPage,
 
@@ -12,4 +17,9 @@ export {
   LoginPage,
 
   HomePage,
+
+  BookDetailsPage,
+  BookReader,
+
+  MyBooks,
 }

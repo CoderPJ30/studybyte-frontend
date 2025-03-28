@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NavigationBar = () => {
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+
+  const openProfileMenu = () => {
+    setProfileMenuOpen(!profileMenuOpen);
+  };
+
   return (
-    <nav className="flex flex-wrap gap-5 justify-between self-stretch w-full max-md:max-w-full">
+    <nav className="flex flex-wrap gap-5 pt-4 px-5 justify-between self-stretch w-full max-md:max-w-full bg-zinc-900">
       <div className="flex gap-3 my-auto text-2xl font-bold text-white whitespace-nowrap cursor-default">
         <h1 className="grow">StudyByte</h1>
         <img
@@ -46,13 +52,34 @@ const NavigationBar = () => {
         </div>
       </div>
       <div className="flex items-center gap-5">
-        <Link to="\cart">
+        <Link to="/cart">
           <FontAwesomeIcon icon={faShoppingCart} className="text-3xl text-white" />
         </Link>
-        <Link to="\profile">
-          <FontAwesomeIcon icon={faUserCircle} className="text-4xl text-white" />
-        </Link>
+        <FontAwesomeIcon icon={faUserCircle}
+          className="text-4xl text-white cursor-pointer"
+          onClick={openProfileMenu}
+        />
+
       </div>
+
+      {profileMenuOpen && (
+        <div className="absolute right-0 flex flex-col gap-2 mt-16 bg-white rounded-lg shadow-lg">
+          <Link to="/profile" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100">
+            Profile
+          </Link>
+          <Link to="/settings" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100">
+            Settings
+          </Link>
+          <button className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100"
+            onClick={() => {
+              setProfileMenuOpen(false);
+              localStorage.removeItem("token");
+              window.location.href = "/login";
+            }}>
+            Logout
+          </button>
+        </div>
+      )}
     </nav >
   );
 };
