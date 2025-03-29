@@ -56,13 +56,13 @@ const PDFViewer = ({ pdfUrl }) => {
       </div>
 
       {/* PDF Container */}
-      <div className="w-fit max-w-4xl h-full shadow-lg rounded-lg bg-white p-4 flex justify-center items-center">
+      <div className="w-fit max-w-4xl h-full shadow-lg rounded-lg bg-white p-4 flex justify-center items-center overflow-auto">
         <Document
           file={pdfUrl}
           onLoadSuccess={({ numPages }) => setNumPages(numPages)}
           className="w-full flex justify-center"
         >
-          <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false} width={600} />
+          <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false} width={600} scale={0.8} />
         </Document>
       </div>
 

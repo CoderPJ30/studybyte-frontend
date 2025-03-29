@@ -63,7 +63,7 @@ const NavigationBar = () => {
       </div>
 
       {profileMenuOpen && (
-        <div className="absolute right-0 flex flex-col gap-2 mt-16 bg-white rounded-lg shadow-lg">
+        <div className="absolute right-0 flex flex-col items-center w-40 gap-2 mt-16 bg-white rounded-lg shadow-lg z-30">
           <Link to="/profile" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100">
             Profile
           </Link>
