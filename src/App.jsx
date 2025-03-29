@@ -8,7 +8,7 @@ import Footer from "./components/common/Footer.jsx";
 function App() {
   const location = useLocation();
 
-  const isAuthPage = ['/login', '/signup'].includes(location.pathname);
+  const isAuthPage = ['/login', '/signup', '/book/:bookId/read'].includes(location.pathname);
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-900 items-center">
