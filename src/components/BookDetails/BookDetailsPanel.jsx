@@ -39,6 +39,23 @@ const BookDetailsPanel = ({ book, user }) => {
     }
   }
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Check this out!",
+          text: "I found something interesting.",
+          url: window.location.href,
+        });
+        console.log("Shared successfully!");
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      alert("Web Share API not supported in this browser.");
+    }
+  };
+
   return (
     <section className="self-center max-w-[1356px] px-16 py-10 mt-4 w-full rounded-2xl bg-neutral-700 max-md:px-5 max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col">
@@ -119,7 +136,7 @@ const BookDetailsPanel = ({ book, user }) => {
                   icon={isBookBookmarked ? faBookmarkSolid : faBookmark}
                   className="text-white text-2xl cursor-pointer" />
               </button>
-              <button>
+              <button onClick={handleShare}>
                 <FontAwesomeIcon icon={faPaperPlane} className="text-white text-2xl cursor-pointer" />
               </button>
             </div>
