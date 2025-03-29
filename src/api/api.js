@@ -1,4 +1,6 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1";
+const API_BASE_URL = import.meta.env.DEV
+  ? 'http://localhost:3000/api/v1'
+  : import.meta.env.VITE_BACKEND_URL;
 
 // Helper function to get the access token from storage
 const getToken = () => localStorage.getItem("token");
