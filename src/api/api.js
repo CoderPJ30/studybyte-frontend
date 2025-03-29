@@ -12,6 +12,7 @@ const apiCall = async (endpoint, { method = "GET", body = null, headers = {} } =
 
     const response = await fetch(`${API_BASE_URL}/api/v1${endpoint}`, {
       method,
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
         Authorization: token ? `Bearer ${token}` : "",
