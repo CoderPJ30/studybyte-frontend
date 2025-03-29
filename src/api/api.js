@@ -10,7 +10,7 @@ const apiCall = async (endpoint, { method = "GET", body = null, headers = {} } =
   try {
     const token = getToken();
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1${endpoint}`, {
       method,
       headers: {
         "Content-Type": "application/json",
