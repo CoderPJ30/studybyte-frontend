@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import UserContext from "../../context/UserContext.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 const NavigationBar = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+
+  const { user } = useContext(UserContext);
+
+  const navlinks = [
+    { title: "Home", link: "/home" },
+    { title: "Books", link: "/books" },
+    { title: "My books", link: "/my-books" },
+    { title: "Contact", link: "/contact" },
+  ]
 
   const openProfileMenu = () => {
     setProfileMenuOpen(!profileMenuOpen);
@@ -22,18 +32,11 @@ const NavigationBar = () => {
       </div>
       <div className="flex gap-20 items-center">
         <div className="flex gap-12 items-center text-xl font-semibold text-neutral-400 max-md:max-w-full">
-          <NavLink to="/home" className={({ isActive }) => `${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'} self-stretch my-auto`}>
-            Home
-          </NavLink>
-          <NavLink to="/books" className={({ isActive }) => `${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'} self-stretch my-auto`}>
-            Books
-          </NavLink>
-          <NavLink to="/my-books" className={({ isActive }) => `${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'} self-stretch my-auto`}>
-            My books
-          </NavLink>
-          <NavLink to="/contact" className={({ isActive }) => `${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'} self-stretch my-auto`}>
-            Contact
-          </NavLink>
+          {navlinks.map((link) => (
+            <NavLink key={link.title} to={link.link} className={({ isActive }) => `${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'} self-stretch my-auto`}>
+              {link.title}
+            </NavLink>
+          ))}
         </div>
 
         <div className="flex items-center self-stretch my-auto text-base text-zinc-500">
@@ -63,14 +66,19 @@ const NavigationBar = () => {
       </div>
 
       {profileMenuOpen && (
-        <div className="absolute right-0 flex flex-col items-center w-40 gap-2 mt-16 bg-white rounded-lg shadow-lg z-30">
-          <Link to="/profile" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100">
+        <div className="absolute right-0 flex flex-col items-center min-w-40 gap-2 mt-16 bg-white rounded-lg shadow-lg z-30">
+          {/* <Link to="/profile" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100 w-full text-center"
+            onClick={() => setProfileMenuOpen(false)}
+          >
             Profile
-          </Link>
-          <Link to="/settings" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100">
+          </Link> */}
+          {/* <Link to="/settings" className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100">
             Settings
-          </Link>
-          <button className="px-5 py-2.5 text-lg text-neutral-900 rounded-lg hover:bg-zinc-100"
+          </Link> */}
+          <p className="px-3 py-3 text-lg">
+            Hello, {user.user_fullname}!
+          </p>
+          <button className="px-5 py-2.5 text-lg text-neutral-900 w-full rounded-lg hover:bg-zinc-100 hover:cursor-pointer"
             onClick={() => {
               setProfileMenuOpen(false);
               localStorage.removeItem("token");

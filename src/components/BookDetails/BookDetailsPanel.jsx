@@ -5,6 +5,7 @@ import { faHeart as faHeartSolid, faBookmark as faBookmarkSolid } from "@fortawe
 import { useNavigate } from "react-router-dom";
 import apiCall from "../../api/api.js";
 import BookRating from "../common/BookRating.jsx";
+import { showSuccessToast, showErrorToast } from "../../utils/toast.js";
 
 const BookDetailsPanel = ({ book, user }) => {
   const navigate = useNavigate();
@@ -38,6 +39,16 @@ const BookDetailsPanel = ({ book, user }) => {
       console.error(error);
     }
   }
+
+  const handleAddToCart = async (bookId) => {
+    try {
+      await apiCall(`/user/cart/book/${bookId}`, { method: "POST" });
+      showSuccessToast("Book added to cart successfully!");
+    } catch (error) {
+      console.error("Error adding book to cart:", error);
+      showErrorToast("Failed to add book to cart. Please try again.");
+    }
+  };
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -106,7 +117,10 @@ const BookDetailsPanel = ({ book, user }) => {
                 <button className="overflow-hidden px-16 py-2 mt-5 rounded-xl bg-neutral-900 max-md:px-5 cursor-pointer">
                   Buy now
                 </button>
-                <button className="overflow-hidden px-14 py-2 mt-5 rounded-xl bg-zinc-500 max-md:px-5 cursor-pointer">
+                <button
+                  className="overflow-hidden px-14 py-2 mt-5 rounded-xl bg-zinc-500 max-md:px-5 cursor-pointer"
+                  onClick={() => handleAddToCart(book._id)}
+                >
                   Add to cart
                 </button>
               </>

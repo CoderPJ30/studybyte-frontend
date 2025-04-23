@@ -8,7 +8,11 @@ import HomePage from './Home/HomePage'
 import BookDetailsPage from './BookDetails/BookDetailsPage'
 import BookReader from './BookReader'
 
+import Books from './Books'
 import MyBooks from './MyBooks'
+import Contact from './Contact'
+
+import Cart from './Cart'
 
 export {
   ErrorPage,
@@ -21,5 +25,9 @@ export {
   BookDetailsPage,
   BookReader,
 
+  Books,
   MyBooks,
+  Contact,
+
+  Cart,
 }

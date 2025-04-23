@@ -6,7 +6,8 @@ import {
   createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate
 } from 'react-router-dom';
 import {
-  ErrorPage, SignUpPage, LoginPage, HomePage, BookDetailsPage, BookReader, MyBooks
+  ErrorPage, SignUpPage, LoginPage, HomePage, BookDetailsPage, BookReader, MyBooks,
+  Contact, Books, Cart
 } from './components/index.js';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
@@ -24,7 +25,10 @@ const router = createBrowserRouter(
       <Route path="/home" element={<ProtectedRoute element={<HomePage />} />} />
       <Route path="/book/:bookId" element={<ProtectedRoute element={<BookDetailsPage />} />} />
       <Route path="/book/:bookId/read" element={<ProtectedRoute element={<BookReader />} />} />
+      <Route path="/books" element={<ProtectedRoute element={<Books />} />} />
       <Route path="/my-books" element={<ProtectedRoute element={<MyBooks />} />} />
+      <Route path="/contact" element={<ProtectedRoute element={<Contact />} />} />
+      <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
     </Route>
   )
 );

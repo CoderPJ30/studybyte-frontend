@@ -7,7 +7,7 @@ const BookGrid = ({ title, books, isDetailed = true }) => {
   return (
     <section className="mt-9 w-full max-w-[1356px] max-md:max-w-full">
       <div className="flex items-center justify-between mb-10 ml-5 max-md:ml-2.5">
-        <h2 className="text-2xl font-bold text-white">
+        <h2 className="text-2xl font-bold text-white -m-5">
           {title}
         </h2>
         <div className="flex items-center gap-2 cursor-pointer">

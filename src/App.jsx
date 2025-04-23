@@ -8,18 +8,19 @@ import Footer from "./components/common/Footer.jsx";
 function App() {
   const location = useLocation();
 
-  const isAuthPage =
+  const isLayoutExcludedRoute =
     location.pathname === '/login' ||
     location.pathname === '/signup' ||
-    (location.pathname.startsWith('/book/') && location.pathname.endsWith('/read'));
+    (location.pathname.startsWith('/book/') && location.pathname.endsWith('/read')) ||
+    location.pathname === '/profile';
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-900 items-center">
       <UserContextProvider >
         <Toaster position="top-right" />
-        {!isAuthPage && <NavigationBar />}
+        {!isLayoutExcludedRoute && <NavigationBar />}
         <Outlet />
-        {!isAuthPage && <Footer />}
+        {!isLayoutExcludedRoute && <Footer />}
       </UserContextProvider>
     </div>
   )
