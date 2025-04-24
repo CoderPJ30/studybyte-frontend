@@ -13,6 +13,8 @@ import MyBooks from './MyBooks'
 import Contact from './Contact'
 
 import Cart from './Cart'
+import Checkout from './Checkout'
+import SearchPage from './SearchPage'
 
 export {
   ErrorPage,
@@ -30,4 +32,6 @@ export {
   Contact,
 
   Cart,
+  Checkout,
+  SearchPage,
 }

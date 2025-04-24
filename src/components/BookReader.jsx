@@ -10,7 +10,12 @@ const BookReader = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await apiCall(`/books/${bookId}/read`);
+        const response = await apiCall(`/books/${bookId}/read`, {
+          method: "GET",
+          headers: {
+            Accept: "application/pdf",
+          },
+        });
 
         if (typeof response.data?.fileUrl === "string") {
           setPdfUrl(response.data.fileUrl);

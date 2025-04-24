@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 import UserContext from "../../context/UserContext.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +9,8 @@ const NavigationBar = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
   const { user } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const navlinks = [
     { title: "Home", link: "/home" },
@@ -50,6 +53,14 @@ const NavigationBar = () => {
               type="search"
               placeholder="Search books by title, author, category"
               className="flex-auto my-auto w-[296px] bg-transparent outline-none"
+              onInput={(e) => {
+                const query = e.target.value.trim();
+                if (query.length > 0) {
+                  navigate(`/search?s=${encodeURIComponent(query)}`);
+                } else {
+                  navigate(-1);
+                }
+              }}
             />
           </div>
         </div>

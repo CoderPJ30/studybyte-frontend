@@ -11,7 +11,10 @@ const BookDetailsPanel = ({ book, user }) => {
   const navigate = useNavigate();
   const [isBookLiked, setIsBookLiked] = useState(user?.user_liked_books?.includes(book._id));
   const [isBookBookmarked, setIsBookBookmarked] = useState(user?.user_saved_books?.includes(book._id));
-  const [userRating, setUserRating] = useState(user?.user_rated_books?.find(ratedBook => ratedBook.book.toString() === book._id)?.rating);
+  const [isBookPurchased, setIsBookPurchased] = useState(user?.user_purchased_books?.includes(book._id));
+  const [userRating, setUserRating] = useState(user?.user_rated_books?.find(
+    ratedBook => ratedBook.book.toString() === book._id)?.rating
+  );
 
 
   const likeBook = async () => {
@@ -112,9 +115,10 @@ const BookDetailsPanel = ({ book, user }) => {
               <p className="self-start text-2xl">Free</p>
             )}
 
-            {book.book_isPaid ? (
+            {book.book_isPaid && !isBookPurchased ? (
               <>
-                <button className="overflow-hidden px-16 py-2 mt-5 rounded-xl bg-neutral-900 max-md:px-5 cursor-pointer">
+                <button className="overflow-hidden px-16 py-2 mt-5 rounded-xl bg-neutral-900 max-md:px-5 cursor-pointer"
+                  onClick={() => navigate(`/checkout`, { state: { bookId: book._id } })}>
                   Buy now
                 </button>
                 <button

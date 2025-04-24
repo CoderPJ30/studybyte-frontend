@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import {
   ErrorPage, SignUpPage, LoginPage, HomePage, BookDetailsPage, BookReader, MyBooks,
-  Contact, Books, Cart
+  Contact, Books, Cart, Checkout, SearchPage
 } from './components/index.js';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
@@ -29,6 +29,8 @@ const router = createBrowserRouter(
       <Route path="/my-books" element={<ProtectedRoute element={<MyBooks />} />} />
       <Route path="/contact" element={<ProtectedRoute element={<Contact />} />} />
       <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
+      <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
+      <Route path="/search" element={<ProtectedRoute element={<SearchPage />} />} />
     </Route>
   )
 );

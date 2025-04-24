@@ -21,8 +21,15 @@ const apiCall = async (endpoint, { method = "GET", body = null, headers = {} } =
       body: body ? JSON.stringify(body) : null,
     });
 
-    const responseData = await response.json();
+    const contentType = response.headers.get("Content-Type");
 
+    if (contentType && contentType.includes("application/pdf")) {
+      const blob = await response.blob();
+      if (!response.ok) throw new Error("Failed to fetch PDF");
+      return { data: blob };
+    }
+
+    const responseData = await response.json();
     if (!response.ok) {
       throw new Error(responseData.message || `API Error: ${response.statusText}`);
     }

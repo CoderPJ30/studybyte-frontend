@@ -29,10 +29,6 @@ function Cart() {
     }
   };
 
-  const handleClick = (id) => {
-    navigate(`/book/${id}`);
-  };
-
   return (
     <div className="flex flex-col px-20 w-full min-h-screen bg-zinc-900 text-white pt-10">
       <h1 className="text-3xl font-semibold mb-8">Your Cart</h1>
@@ -42,7 +38,9 @@ function Cart() {
           <h2 className="text-2xl">Total:</h2>
           <p className="text-2xl font-semibold">₹{totalPrice}</p>
         </div>
-        <button className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">
+        <button className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg"
+          onClick={() => navigate(`/checkout`, { state: { cart } })}
+        >
           Checkout
         </button>
       </div>
@@ -57,7 +55,7 @@ function Cart() {
                 key={book._id}
                 className="relative bg-white text-black p-4 rounded-lg border border-zinc-300 min-w-60 cursor-pointer"
               >
-                <div onClick={() => handleClick(book._id)}>
+                <div onClick={() => navigate(`/book/${book._id}`)}>
                   <img
                     src={book.book_cover}
                     alt={`Cover of ${book.book_title}`}
